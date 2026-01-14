@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Ruhama Sisay Alemu 🎉</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Comic Sans MS', cursive;
+}
+
+/* Background video */
+video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* Dark overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: -1;
+}
+
+/* Lock screen */
+.lock {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg,#ff4081,#673ab7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 28px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+/* Card */
+.card {
+  background: white;
+  padding: 28px;
+  border-radius: 25px;
+  text-align: center;
+  width: 340px;
+  margin: auto;
+  box-shadow: 0 0 40px rgba(255,255,255,0.4);
+}
+
+h1 { color:#ff4081; }
+
+.name { font-size:26px;color:#673ab7; }
+
+.lang { font-size:16px;margin-bottom:8px; }
+
+.photo {
+  width:160px;
+  height:160px;
+  border-radius:50%;
+  object-fit:cover;
+  border:5px solid #ff4081;
+  box-shadow:0 0 25px #ff4081;
+}
+
+.cake {
+  font-size:85px;
+  position:relative;
+  margin:10px 0;
+  cursor:pointer;
+}
+
+.flame {
+  position:absolute;
+  top:-18px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+button {
+  background:#ff4081;
+  border:none;
+  color:white;
+  padding:12px 22px;
+  font-size:18px;
+  border-radius:14px;
+  cursor:pointer;
+}
+
+.whatsapp {
+  display:block;
+  margin-top:10px;
+  background:#25D366;
+  color:white;
+  padding:10px;
+  border-radius:14px;
+  text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background video -->
+<video autoplay muted loop>
+  <source src="https://cdn.coverr.co/videos/coverr-fireworks-at-night-1565/1080p.mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
+
+<!-- Lock screen -->
+<div class="lock" onclick="unlock()">🎁 Tap to Open Your Birthday Surprise 🎁</div>
+
+<div class="card" id="card" style="display:none;">
+  <h1>🎉 Happy Birthday 🎉</h1>
+  <div class="name">Ruhama Sisay Alemu</div>
+
+  <div class="lang">
+    መልካም የልደት ቀን 🎂<br>
+    Baga Dhalatte 🎉
+  </div>
+
+  <img src="photo.jpg" class="photo">
+
+  <div class="cake" onclick="blow()">
+    🎂
+    <div class="flame" id="flame">🔥</div>
+  </div>
+
+  <button onclick="celebrate()">Celebrate 🎊</button>
+
+  <a class="whatsapp"
+     href="https://wa.me/?text=🎉%20Happy%20Birthday%20Ruhama%20Sisay%20Alemu!%20🎂"
+     target="_blank">
+     Share on WhatsApp 📱
+  </a>
+</div>
+
+<!-- Music -->
+<audio id="music">
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_7e5f53c6d2.mp3">
+</audio>
+
+<!-- Voice message -->
+<audio id="voice">
+  <source src="https://cdn.pixabay.com/audio/2022/10/18/audio_8f3a0b63b7.mp3">
+</audio>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+function unlock(){
+  document.querySelector('.lock').style.display="none";
+  document.getElementById('card').style.display="block";
+  document.getElementById('voice').play();
+}
+
+function celebrate(){
+  document.getElementById('music').play();
+  confetti({particleCount:400,spread:160});
+}
+
+function blow(){
+  document.getElementById('flame').style.display="none";
+  confetti({particleCount:200});
+  navigator.mediaDevices.getUserMedia({audio:true});
+}
+</script>
+
+</body>
+</html>
